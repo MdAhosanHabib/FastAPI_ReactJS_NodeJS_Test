@@ -1,0 +1,86 @@
+#####################################MongoDB########################
+[root@ahosan1 FastApiReact]# vi /etc/yum.repos.d/mongodb-org-6.0.repo
+    [mongodb-org-6.0]
+    name=MongoDB Repository
+    baseurl=https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/6.0/x86_64/
+    gpgcheck=1
+    enabled=1
+    gpgkey=https://www.mongodb.org/static/pgp/server-6.0.asc
+
+[root@ahosan1 FastApiReact]# yum install -y mongodb-org
+[root@ahosan1 FastApiReact]# cat /etc/mongod.conf
+
+[root@ahosan1 FastApiReact]# systemctl start mongod
+[root@ahosan1 FastApiReact]# systemctl enable mongod
+[root@ahosan1 FastApiReact]# systemctl daemon-reload
+[root@ahosan1 FastApiReact]# systemctl status mongod
+
+[root@ahosan1 FastApiReact]# vi /etc/mongod.conf
+    # network interfaces
+    net:
+    port: 27017
+    bindIp: 0.0.0.0  # Enter 0.0.0.0,:: to bind to all IPv4
+
+DB-IP: 192.168.193.133
+
+#####################################FastAPI########################
+--install pip
+py -m pip install --upgrade pip
+py -m pip --version
+
+--install vertual env
+py -m pip install --user virtualenv
+
+--Creating a virtual environment
+py -m venv env
+
+--to active venv
+1.Open PowerShell
+2.Run the following command: Set-ExecutionPolicy RemoteSigned -Scope CurrentUser 
+OR 
+Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser
+
+--Activating a virtual environment
+.\env\Scripts\activate
+
+--Leaving the virtual environment
+deactivate
+
+--install fastAPI
+pip install fastapi "uvicorn[standard]"
+
+--run fastAPI
+uvicorn main:app --reload
+
+--import mongodb driver
+pip install motor
+
+--import DB
+python create_db.py
+
+--requirements check
+pip freeze
+
+--install sqlAlchemy & PG driver [not need here]
+pip install sqlalchemy
+pip install psycopg2
+
+#####################################ReactJS########################
+--create react app
+install nodeJS
+npm install -g npm@9.6.5
+npm install -g create-react-app
+
+--go this directory
+E:\Running\MyProject\FastApiReact
+--runn to create
+create-react-app react-fastapi
+
+--need a extra package
+cd E:\Running\MyProject\FastApiReact
+npm install axios bootstrap
+
+--after create app
+cd react-fastapi
+npm start
+
